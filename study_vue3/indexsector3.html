@@ -2,11 +2,32 @@
 
 <div id="app">{{ message }}</div>
 
-<p>Using text interpolation: {{ rawHtml }}</p>
-<p>Using v-html directive: <span v-html="rawHtml"></span></p>
+<div id="app1">
+  <p>Using text interpolation: </p>
+  <p>Using v-html directive: 
+    <span v-html="rawHtml">
+    </span>
+  </p>
+</div>
+
+<p>속성 바인딩</p>
+<div v-bind:id="dynamicId1"></div>
+
+<p>속기</p>
+<div :id="dynamicId2"></div>
+
+여러속성 동적 바인딩
+<br/>
+<div id="app2">
+  <div v-bind="objectTest">testMessage</div>
+</div>
 
 <script>
   const { createApp, ref } = Vue
+  const object = {
+    id:"constTest",
+    disabled:true
+  }
 
   createApp({
     setup() {
@@ -16,4 +37,24 @@
       }
     }
   }).mount('#app')
+  
+  createApp({
+    data() {
+      return {
+        rawHtml: '텍스트 보간 사용: <span style="color: red">빨간색이어야 합니다.</span> v-html 지시어 사용: 빨간색이어야 합니다.'
+      }
+    }
+  }).mount("#app1")
+
+  createApp({
+    setup() {
+      return {
+        testMessage: "TEST1",
+        objectTest: {
+          id: "objectTest",
+          disabled: false
+        }
+      }
+    }
+  }).mount("#app2")
 </script>

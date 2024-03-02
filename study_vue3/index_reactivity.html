@@ -1,0 +1,30 @@
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
+샘플페이지
+<div id="app">반응형 기초
+    <button @click="refMessage++" >버튼</button>
+    {{ refMessage }}
+    <button @click="refValueUp++"> 버튼 increase</button>
+    {{ refValueUp }}
+</div>
+
+<script>
+    const { createApp, ref } = Vue
+    
+    const refValueUp = ref(0)
+    function increaseValue() {
+        refValueUp++
+    }
+
+    createApp({
+        setup() {
+            return {
+                message: "message Test",
+                refMessage: ref(0),
+                refValueUp: refValueUp
+            }
+        }
+    }).mount("#app")
+</script>
