@@ -1,0 +1,24 @@
+<script type="importmap">
+{
+    "imports": {
+    "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+    }
+}
+</script>
+
+<script type="module" setup>
+    import { ref } from 'vue'
+
+    const count = ref(0)
+
+    function increment() {
+        count.value++
+    }
+</script>
+
+<template>
+  <button @click="increment">
+    {{ count }}    
+  </button>
+  1
+</template>

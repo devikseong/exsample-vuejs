@@ -1,0 +1,34 @@
+<script type="importmap">
+{
+    "imports": {
+    "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+    }
+}
+</script>
+
+<script type="module">
+    import { createApp, ref } from 'vue'
+
+    const MyComponent = {
+        setup() {
+            const count = ref(0)
+
+            function increment() {
+                count.value++
+            }
+            
+            return {
+                count , 
+                increment
+            }
+        }
+    }
+
+    createApp(MyComponent).mount('#app')
+</script>
+
+<div id="app">
+    <button @click="count++">
+      {{ count }}
+    </button>
+  </div>
