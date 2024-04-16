@@ -1,0 +1,41 @@
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<div id="app">
+    <button @click="awesome = !awesome">Change</button>
+    
+    <h1 v-if="awesome">Vue is very Good</h1>
+    <h1 v-else>NO?</h1>
+
+    <button @click="ok = !ok">Show Template</button>
+   
+    <template v-if="ok">
+        <button @click="type = 'A'">A Change</button>
+        <button @click="type = 'B'">B Change</button>
+        <button @click="type = 'C'">C Change</button>
+        <button @click="type = 'D'">D Change</button>
+
+        <h1 v-if="type === 'A'">A</h1>
+        <h1 v-else-if="type === 'B'">B</h1>
+        <h1 v-else-if="type === 'C'">C</h1>
+        <h1 v-else>ELSE</h1>
+    </template>
+    
+</div>
+
+<script>
+    const {createApp, ref} = Vue
+    createApp({
+        setup() {
+            const message = ref("HAHA")
+            const awesome = ref(true)
+            const type = ref("A")
+            const ok = ref(false)
+            return {
+                message,
+                awesome,
+                type,
+                ok
+            }            
+        }
+    }).mount("#app")
+</script>
